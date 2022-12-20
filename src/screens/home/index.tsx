@@ -21,6 +21,7 @@ import {
 import FilterIconSVG from '@assets/svg/FilterIconSVG';
 import { COLORS } from '@constants/Constants';
 import ChrismastIsComing from '@screens/lotties/ChrismastIsComing';
+import ImageComponent from '@core/Image/ImageComponent';
 
 const { width } = Dimensions.get('window');
 
@@ -33,7 +34,9 @@ const HomeScreen: React.FC<Props> = () => {
       <ViewContainer>
         <IContent>Content bình thường</IContent>
         <IContent clsx={'italic'}>Content in nghiêng</IContent>
-        <IContent clsx={'leading-18 text-main-blue'}>Content LineHeight 18 px</IContent>
+        <IContent clsx={'leading-18 text-main-blue'}>
+          Content LineHeight 18 px
+        </IContent>
         <BodyB>Đơn vị</BodyB>
         <Body14R>Tất cả các chi nhánh trực thuộc</Body14R>
         <Body16R>Đăng xuất</Body16R>
@@ -66,11 +69,14 @@ const HomeScreen: React.FC<Props> = () => {
         </HoverBtn>
 
         <Card clsx={'bg-transparent flex h-[300px] py-2'}>
-          {/*<ImageBase*/}
+          {/*<ImageComponent*/}
           {/*  source={*/}
           {/*    'https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_thumbnails/doraemons9_07_horizontalposter-6c4d708980d3-1609395243354-9fo2xUfP.png?v=0&maxW=600'*/}
           {/*  }*/}
-          {/*  style={nStyle.image}*/}
+          {/*  // style={nStyle.image}*/}
+          {/*  className={*/}
+          {/*    'w-[100px] h-[100px] rounded-full border-2 border-main-blue mt-4 '*/}
+          {/*  }*/}
           {/*  resize={'contain'}*/}
           {/*  priorityType={'high'}*/}
           {/*/>*/}

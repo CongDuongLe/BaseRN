@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlatListProps } from 'react-native';
+import {FlashListProps} from "@shopify/flash-list";
 
-interface Props extends FlatListProps<any> {
+interface Props extends FlashListProps<any> {
   onRefresh?: () => void;
   onLoadMore?: () => void;
   renderItem: (item: any, index: number) => React.ReactElement;
@@ -11,4 +11,4 @@ interface Props extends FlatListProps<any> {
   refreshing?: boolean;
 }
 
-export type PropsFlatlist = React.FC<Props>;
+export type PropsFlashList = React.FC<Props>;

@@ -1,31 +1,28 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { getPopularAnime } from '@utils/API/AnimeList';
-import GlobalLoading from "@components/GlobalLoading";
-import { COLORS } from "@constants/Constants";
-import FlashListWrapper from "@components/FlatList";
-import ImageBase from "@components/ImageBase/ImageBase";
+import GlobalLoading from '@components/GlobalLoading';
+import { COLORS } from '@constants/Constants';
+import FlashListWrapper from '@components/FlashList';
 
- 
 const ReactQuery = () => {
-  const { data, isLoading, isError } : any = useQuery({
+  const { data, isLoading, isError }: any = useQuery({
     queryKey: ['popular'],
     queryFn: () => getPopularAnime('popular'),
   });
-
 
   if (isLoading) {
     return (
       <View style={styles.container}>
         <GlobalLoading />
       </View>
-    )
+    );
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.items} className='px-4 py-8' >
+      <TouchableOpacity style={styles.items} className="px-4 py-8">
         <Text style={styles.title}>{item.animeTitle}</Text>
         {/*<ImageBase source={item.animeImage} priorityType={'normal'} />*/}
       </TouchableOpacity>
@@ -34,7 +31,11 @@ const ReactQuery = () => {
 
   return (
     <View style={styles.container}>
-      <FlashListWrapper renderItem={renderItem} data={data?.data} keyExtractor={index => index.toString()}  />
+      <FlashListWrapper
+        renderItem={renderItem}
+        data={data?.data}
+        keyExtractor={index => index.toString()}
+      />
     </View>
   );
 };
@@ -43,8 +44,8 @@ export default ReactQuery;
 
 const styles = StyleSheet.create({
   container: {
-    flex : 1,
-    backgroundColor  : 'white'
+    flex: 1,
+    backgroundColor: 'white',
   },
   items: {
     backgroundColor: COLORS.main_blue,
