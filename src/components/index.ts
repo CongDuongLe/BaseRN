@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 import { globalLoading } from './GlobalLoading';
 import { globalMessage } from './GlobalMessage';
 import Modal from './Modal';
-import FlatList from './FlatList';
+import FlashList from './FlashList';
 import Header from './Header';
 
 export {
@@ -12,7 +12,7 @@ export {
   Button,
   Checkbox,
   Modal,
-  FlatList,
+  FlashList,
   Header,
   globalLoading,
   globalMessage,

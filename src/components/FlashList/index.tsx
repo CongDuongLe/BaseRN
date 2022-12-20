@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList, RefreshControl, View } from 'react-native';
-import { PropsFlatlist } from './model';
+import { RefreshControl, View } from 'react-native';
+import { PropsFlashList } from './model';
 import { FlashList } from '@shopify/flash-list';
 
-const FlashListWrapper: PropsFlatlist = props => {
+const FlashListWrapper: PropsFlashList = props => {
   const { data, renderItem, onRefresh, onLoadMore } = props;
   return (
     <View
