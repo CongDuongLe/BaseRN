@@ -6,7 +6,7 @@ import { scale } from 'react-native-size-scaling';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { styles } from './styles';
 import { HeaderProps } from './model';
-import { Body16R } from '@shared/constant/Text/TextBase';
+import { Body16R } from '@core/Typo';
 
 const HeaderComponent: HeaderProps = props => {
   const {

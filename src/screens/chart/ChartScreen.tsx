@@ -15,7 +15,7 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-import { PageTitle } from '@shared/constant/Text/TextBase';
+import { PageTitle } from '@core/Typo';
 
 const { width } = Dimensions.get('window');
 
