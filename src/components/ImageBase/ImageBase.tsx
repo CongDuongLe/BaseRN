@@ -7,7 +7,7 @@ interface ImageBaseProps {
   source: string;
   style?: any;
   onPress?: () => void;
-  resizeMode?: any;
+  resize?: any;
   borderRadius?: number;
   width?: number;
   height?: number;
@@ -15,7 +15,7 @@ interface ImageBaseProps {
 }
 
 const ImageBase = (props: ImageBaseProps) => {
-  const { source, style, resizeMode, priorityType } = props;
+  const { source, style, resize, priorityType } = props;
   return (
     <FastImage
       style={[styles.image, style]}
@@ -23,7 +23,7 @@ const ImageBase = (props: ImageBaseProps) => {
         uri: source,
         priority: FastImage.priority.priorityType,
       }}
-      resizeMode={FastImage.resizeMode.contain}
+      resizeMode={FastImage.resizeMode.resize}
     />
   );
 };

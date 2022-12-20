@@ -1,110 +1,91 @@
 import { Header, Text } from '@components';
 import React from 'react';
 import { SafeAreaView, View, Dimensions } from 'react-native';
-import { Image } from 'react-native-element-image';
 import { scale } from 'react-native-size-scaling';
-import { BANNER, DATA } from './constant';
 import { styles } from './styles';
-import { ScrollView } from 'react-native-virtualized-view';
-import FlashListWrapper from '@components/FlatList';
+import { StyleSheet } from 'react-native-size-scaling';
 import {
   Body14R,
+  Body16BUp,
   Body16R,
-  Body16RUp,
+  Body16SB,
   BodyB,
   IContent,
 } from '@shared/constant/Text/TextBase';
-import { Row, ViewContainer } from '@shared/constant/View/ViewBase';
+import { Card, Row, ViewContainer } from '@shared/constant/View/ViewBase';
 import {
   ApplyButton,
   BgTransparentBtn,
-  ButtonBase,
   HoverBtn,
 } from '@shared/constant/Button/ButtonBase';
-import ButtonComponent from '@components/Button';
 import FilterIconSVG from '@assets/svg/FilterIconSVG';
+import ImageBase from '@components/ImageBase/ImageBase';
+import { COLORS } from '@constants/Constants';
 
 const { width } = Dimensions.get('window');
 
 interface Props {}
 
 const HomeScreen: React.FC<Props> = () => {
-  const _renderItemSlider = ({ item, index }: any) => {
-    return (
-      <View key={index.toString()} style={styles.itemSlider}>
-        <Image
-          style={styles.imgSlider}
-          width={width}
-          height={150}
-          source={item.img}
-        />
-      </View>
-    );
-  };
-
-  const _renderItem = ({ item, index }: any) => {
-    return (
-      <View key={index.toString()} style={styles.item}>
-        <Image
-          style={styles.img}
-          width={width / 2 - scale(24)}
-          source={item.img}
-          resizeMode="cover"
-        />
-        <Text style={styles.text} fontSize={14} bold>
-          {item.title}
-        </Text>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Header onPressUser={() => {}} onChangeText={_e => {}} />
-      {/* <ScrollView>
-        <FlashListWrapper
-          data={BANNER}
-          renderItem={_renderItemSlider}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-        />
-        <Text style={styles.text} bold fontSize={16}>
-          -------0-------
-        </Text>
-        <FlashListWrapper data={DATA} renderItem={_renderItem} numColumns={2} />
-      </ScrollView> */}
       <ViewContainer>
         <IContent>Content bình thường</IContent>
-        <IContent isItalic>Content in nghiêng</IContent>
+        <IContent clsx={'italic'}>Content in nghiêng</IContent>
+        <IContent clsx={'leading-18'}>Content LineHeight 18 px</IContent>
         <BodyB>Đơn vị</BodyB>
         <Body14R>Tất cả các chi nhánh trực thuộc</Body14R>
-        <Body16R inLogout={true}>Đăng xuất</Body16R>
+        <Body16R>Đăng xuất</Body16R>
+        <Body16SB>Xu hướng doanh thu theo nhiệm vụ</Body16SB>
         <Row>
           <BgTransparentBtn
             onPress={() => {
               console.log('click back');
             }}>
-            <Body16RUp isBack={true}>Trở lại</Body16RUp>
+            <Body16BUp>Trở lại</Body16BUp>
           </BgTransparentBtn>
 
           <ApplyButton
             onPress={() => {
               console.log('click');
             }}>
-            <Body16RUp>Áp dụng</Body16RUp>
+            <Body16BUp clsx={'text-white'}>Áp dụng</Body16BUp>
           </ApplyButton>
         </Row>
 
-        <HoverBtn>
-          <Row>
-            <FilterIconSVG size={24}/>
-            <Body16R>Lọc nâng cao</Body16R>
+        <HoverBtn clsx={'mb-4'}>
+          <Row clsx={'justify-center items-center'}>
+            <FilterIconSVG size={24} />
+            <Body16R clsx={'text-main-blue'}>Lọc nâng cao</Body16R>
           </Row>
         </HoverBtn>
+
+        <Card clsx={'bg-bermuda flex h-[300px] py-2'}>
+          <ImageBase
+            source={
+              'https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_thumbnails/doraemons9_07_horizontalposter-6c4d708980d3-1609395243354-9fo2xUfP.png?v=0&maxW=600'
+            }
+            style={nStyle.image}
+            resize={'contain'}
+            // borderRadius={scale(50)}
+            priorityType={'high'}
+          />
+        </Card>
       </ViewContainer>
     </SafeAreaView>
   );
 };
 
 export default HomeScreen;
+
+const nStyle = StyleSheet.create({
+  image: {
+    width: scale(100),
+    height: scale(100),
+    borderRadius: scale(50),
+    borderWidth: 2,
+    borderColor: COLORS.main_blue,
+    marginTop: 8,
+  },
+});
