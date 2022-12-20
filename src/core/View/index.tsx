@@ -2,7 +2,12 @@ import { View } from 'react-native';
 import { StyledComponent } from 'nativewind';
 import React from 'react';
 
-export const ViewContainer = ({ children, clsx }) => {
+interface ViewCoreProps {
+  clsx?: string;
+  children?: React.ReactNode;
+}
+
+export const ViewContainer = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -12,7 +17,7 @@ export const ViewContainer = ({ children, clsx }) => {
   );
 };
 
-export const Row = ({ children, clsx }) => {
+export const Row = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -22,7 +27,7 @@ export const Row = ({ children, clsx }) => {
   );
 };
 
-export const Col = ({ children, clsx }) => {
+export const Col = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -32,7 +37,7 @@ export const Col = ({ children, clsx }) => {
   );
 };
 
-export const Card = ({ children, clsx }) => {
+export const Card = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -42,7 +47,7 @@ export const Card = ({ children, clsx }) => {
   );
 };
 
-export const CardHeader = ({ children, clsx }) => {
+export const CardHeader = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -54,7 +59,7 @@ export const CardHeader = ({ children, clsx }) => {
   );
 };
 
-export const CardBody = ({ children, clsx }) => {
+export const CardBody = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
@@ -64,7 +69,7 @@ export const CardBody = ({ children, clsx }) => {
   );
 };
 
-export const CardFooter = ({ children, clsx }) => {
+export const CardFooter = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}

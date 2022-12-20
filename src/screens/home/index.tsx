@@ -11,16 +11,16 @@ import {
   Body16SB,
   BodyB,
   IContent,
-} from '@shared/constant/Text/TextBase';
-import { Card, Row, ViewContainer } from '@shared/constant/View/ViewBase';
+} from '@core/Typo';
+import { Card, Row, ViewContainer } from '@core/View';
 import {
   ApplyButton,
   BgTransparentBtn,
   HoverBtn,
 } from '@shared/constant/Button/ButtonBase';
 import FilterIconSVG from '@assets/svg/FilterIconSVG';
-import ImageBase from '@components/ImageBase/ImageBase';
 import { COLORS } from '@constants/Constants';
+import ChrismastIsComing from '@screens/lotties/ChrismastIsComing';
 
 const { width } = Dimensions.get('window');
 
@@ -33,7 +33,7 @@ const HomeScreen: React.FC<Props> = () => {
       <ViewContainer>
         <IContent>Content bình thường</IContent>
         <IContent clsx={'italic'}>Content in nghiêng</IContent>
-        <IContent clsx={'leading-18'}>Content LineHeight 18 px</IContent>
+        <IContent clsx={'leading-18 text-main-blue'}>Content LineHeight 18 px</IContent>
         <BodyB>Đơn vị</BodyB>
         <Body14R>Tất cả các chi nhánh trực thuộc</Body14R>
         <Body16R>Đăng xuất</Body16R>
@@ -54,23 +54,27 @@ const HomeScreen: React.FC<Props> = () => {
           </ApplyButton>
         </Row>
 
-        <HoverBtn clsx={'mb-4'}>
+        <HoverBtn
+          onPress={() => {
+            console.log('click');
+          }}
+          clsx={'mb-4'}>
           <Row clsx={'justify-center items-center'}>
             <FilterIconSVG size={24} />
             <Body16R clsx={'text-main-blue'}>Lọc nâng cao</Body16R>
           </Row>
         </HoverBtn>
 
-        <Card clsx={'bg-bermuda flex h-[300px] py-2'}>
-          <ImageBase
-            source={
-              'https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_thumbnails/doraemons9_07_horizontalposter-6c4d708980d3-1609395243354-9fo2xUfP.png?v=0&maxW=600'
-            }
-            style={nStyle.image}
-            resize={'contain'}
-            // borderRadius={scale(50)}
-            priorityType={'high'}
-          />
+        <Card clsx={'bg-transparent flex h-[300px] py-2'}>
+          {/*<ImageBase*/}
+          {/*  source={*/}
+          {/*    'https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_thumbnails/doraemons9_07_horizontalposter-6c4d708980d3-1609395243354-9fo2xUfP.png?v=0&maxW=600'*/}
+          {/*  }*/}
+          {/*  style={nStyle.image}*/}
+          {/*  resize={'contain'}*/}
+          {/*  priorityType={'high'}*/}
+          {/*/>*/}
+          <ChrismastIsComing />
         </Card>
       </ViewContainer>
     </SafeAreaView>

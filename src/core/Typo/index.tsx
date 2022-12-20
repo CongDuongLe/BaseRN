@@ -2,8 +2,11 @@ import { StyledComponent } from 'nativewind';
 import React from 'react';
 import { Text } from '@components';
 
-
-export const PageTitle = ({ children, clsx }) => {
+interface TextCoreProps {
+  clsx?: string;
+  children?: React.ReactNode;
+}
+export const PageTitle = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -15,7 +18,7 @@ export const PageTitle = ({ children, clsx }) => {
   );
 };
 
-export const Body16R = ({ children, clsx }) => {
+export const Body16R = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -27,7 +30,7 @@ export const Body16R = ({ children, clsx }) => {
   );
 };
 
-export const Body16SB = ({ children, clsx }) => {
+export const Body16SB = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -39,8 +42,7 @@ export const Body16SB = ({ children, clsx }) => {
   );
 };
 
-
-export const Body14R = ({ children, clsx }) => {
+export const Body14R = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -52,7 +54,7 @@ export const Body14R = ({ children, clsx }) => {
   );
 };
 
-export const IContent = ({ children, clsx }) => {
+export const IContent = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -64,7 +66,7 @@ export const IContent = ({ children, clsx }) => {
   );
 };
 
-export const BodyB = ({ children, clsx }) => {
+export const BodyB = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -76,7 +78,7 @@ export const BodyB = ({ children, clsx }) => {
   );
 };
 
-export const Body16BUp = ({ children, clsx }) => {
+export const Body16BUp = ({ children, clsx }: TextCoreProps) => {
   return (
     <StyledComponent
       component={Text}
@@ -86,5 +88,3 @@ export const Body16BUp = ({ children, clsx }) => {
     </StyledComponent>
   );
 };
-
-

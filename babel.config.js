@@ -16,6 +16,7 @@ module.exports = {
           '@assets': './src/assets',
           '@reduxCore': './src/reduxCore',
           '@constants': './src/constants',
+          '@core': './src/core',
         },
       },
     ],
