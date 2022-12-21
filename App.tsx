@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, LogBox, StatusBar } from 'react-native';
 import AppWithNavigationState from '@navigators';
-import {} from '@components';
 import GlobalLoading, { globalLoadingRef } from '@components/GlobalLoading';
 import GlobalMessage, { globalMessageRef } from '@components/GlobalMessage';
 import { I18nextProvider } from 'react-i18next';
@@ -9,6 +8,8 @@ import i18next from '@shared/language';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@reduxCore/store';
+import { setupAxios } from "@utils/Configs/Axios";
+import axios from 'axios';
  import {
    useQuery,
    useMutation,
@@ -24,6 +25,9 @@ StatusBar.setBackgroundColor('transparent', true);
 
 
 const queryClient = new QueryClient();
+
+setupAxios(axios, store);
+
 
 
 const MyBase = () => {

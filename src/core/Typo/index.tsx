@@ -5,10 +5,12 @@ import { Text } from '@components';
 interface TextCoreProps {
   clsx?: string;
   children?: React.ReactNode;
+  props?: any;
 }
-export const PageTitle = ({ children, clsx }: TextCoreProps) => {
+export const PageTitle = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-bold text-20 text-bubble-gum leading-28 ${
         clsx ? clsx : ''
@@ -18,9 +20,10 @@ export const PageTitle = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const Body16R = ({ children, clsx }: TextCoreProps) => {
+export const Body16R = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-regular text-16 text-gray1 ${
         clsx ? clsx : ''
@@ -30,9 +33,10 @@ export const Body16R = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const Body16SB = ({ children, clsx }: TextCoreProps) => {
+export const Body16SB = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-semibold text-16 text-gray1 ${
         clsx ? clsx : ''
@@ -42,9 +46,10 @@ export const Body16SB = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const Body14R = ({ children, clsx }: TextCoreProps) => {
+export const Body14R = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-regular text-14 text-black leading-22 ${
         clsx ? clsx : ''
@@ -54,9 +59,10 @@ export const Body14R = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const IContent = ({ children, clsx }: TextCoreProps) => {
+export const IContent = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-regular text-12 text-black leading-22 ${
         clsx ? clsx : ''
@@ -66,9 +72,10 @@ export const IContent = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const BodyB = ({ children, clsx }: TextCoreProps) => {
+export const BodyB = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-bold text-14 text-gray2 leading-22 ${
         clsx ? clsx : ' '
@@ -78,9 +85,10 @@ export const BodyB = ({ children, clsx }: TextCoreProps) => {
   );
 };
 
-export const Body16BUp = ({ children, clsx }: TextCoreProps) => {
+export const Body16BUp = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
+      {...props}
       component={Text}
       className={`font-i-bold text-16 text-main-blue ${clsx ? clsx : ''}
       } leading-24 uppercase`}>
