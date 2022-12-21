@@ -40,5 +40,5 @@ export const {
   todoRequestAction,
   todoSuccessRequestAction,
 } = mainSlice.actions;
-export const       selectMain = (state: { main: any }) => state.main;
+export const selectMain = (state: { main: any }) => state.main;
 export default mainSlice.reducer;

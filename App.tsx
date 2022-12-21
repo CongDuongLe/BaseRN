@@ -8,8 +8,7 @@ import i18next from '@shared/language';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@reduxCore/store';
-import { setupAxios } from "@utils/Configs/Axios";
-import axios from 'axios';
+
  import {
    useQuery,
    useMutation,
@@ -26,7 +25,6 @@ StatusBar.setBackgroundColor('transparent', true);
 
 const queryClient = new QueryClient();
 
-setupAxios(axios, store);
 
 
 
