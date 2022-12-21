@@ -126,6 +126,13 @@ module.exports = {
         30: '30px',
       },
     },
+    borderRadius: {
+      2 : '2px',
+      4 : '4px',
+      6 : '6px',
+      8 : '8px',
+      10 : '10px',
+    },
     plugins: [],
   },
 };

@@ -21,6 +21,7 @@ import {
 import FilterIconSVG from '@assets/svg/FilterIconSVG';
 import { COLORS } from '@constants/Constants';
 import ChrismastIsComing from '@screens/lotties/ChrismastIsComing';
+import Button from '@core/Button';
 import ImageComponent from '@core/Image/ImageComponent';
 
 const { width } = Dimensions.get('window');
@@ -82,6 +83,15 @@ const HomeScreen: React.FC<Props> = () => {
           {/*/>*/}
           <ChrismastIsComing />
         </Card>
+        <Row>
+          <Button
+            type = "dashed"
+            size = "middle"
+          >
+            <Text >Áp dụng</Text>
+          </Button>
+        </Row>
+        
       </ViewContainer>
     </SafeAreaView>
   );

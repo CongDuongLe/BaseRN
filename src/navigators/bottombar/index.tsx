@@ -10,6 +10,7 @@ import ChartScreen from '@screens/chart/ChartScreen';
 import Lotties from '@screens/lotties/Lotties';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import ChartTestScreen from '@screens/chartTest/ChartTestScreen';
 
 export const tabBar = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -102,7 +103,7 @@ export const tabBar = () => {
           // options={{ headerShown: false }}
           name="Chart"
           position="LEFT"
-          component={() => <ChartScreen />}
+          component={() => <ChartTestScreen />}
         />
         <CurvedBottomBar.Screen
           // options={{ headerShown: false }}
