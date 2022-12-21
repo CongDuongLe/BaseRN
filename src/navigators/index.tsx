@@ -3,7 +3,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useEffect} from 'react';
 import LoginScreen from '@screens/login';
 import RegisterScreen from '@screens/register';
 
@@ -18,15 +18,28 @@ import AvatarScreen from '@screens/theme/avatar';
 import CheckboxScreen from '@screens/theme/checkbox';
 import { tabBar } from './bottombar';
 import ReactQuery from '@screens/learn-react-query/ReactQuery';
+import { useSelector } from "react-redux";
 
 export const navigationRef: React.RefObject<NavigationContainerRef<any>> =
   React.createRef();
 const Stack = createNativeStackNavigator();
 
+
+
+
+
+
 function AppNavigator() {
+  const crsftoken = useSelector((state: any) => state.auth.csrfToken);
+
+
+
+
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName={
+        crsftoken ? 'Main' : 'Login'
+      }>
         <Stack.Screen
           name="Main"
           component={tabBar}

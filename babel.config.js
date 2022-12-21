@@ -17,6 +17,7 @@ module.exports = {
           '@reduxCore': './src/reduxCore',
           '@constants': './src/constants',
           '@core': './src/core',
+          '@services': './src/services',
         },
       },
     ],

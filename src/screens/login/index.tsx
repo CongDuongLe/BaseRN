@@ -1,20 +1,22 @@
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { globalLoading, Text } from '@components';
-import Button  from '@components/Button';
-import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
+import Button from '@components/Button';
+import React, { useEffect, useState } from 'react';
 import { ImageBackground, View } from 'react-native';
 import { TextInput } from 'react-native-element-textinput';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { getPopularAnime } from '@utils/API/AnimeList';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLogin, getCsrfToken } from "@services/API/LoginAPI";
+import { saveAccessToken, saveCsrfToken } from "@reduxCore/auth/AuthSlice";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   changeLanguageAction,
   selectMain,
   todoRequestAction,
 } from '@reduxCore/main/slice';
 import { styles } from './styles';
+import { Body16SB } from '@core/Typo';
 
 const IMG_BACKGROUND = require('@assets/images/pictures/background.jpg');
 
@@ -23,45 +25,45 @@ interface Props {}
 const RegisterScrenn: React.FC<Props> = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { locale } = useSelector(selectMain);
+
   const dispatch = useDispatch();
-  // const getAnime =  async () => {
-  //   const res = await getPopularAnime('popular');
-  //   console.log('res', res)
-  // }
+  const accessToken = useSelector((state: any) => state.auth.accessToken);
+  const crsftoken = useSelector((state: any) => state.auth.csrfToken);
+  const [inputValue, setInputValue] = useState({
+    username: '',
+    password: '',
+    provider: 'db',
+    refresh: true,
+  });
 
   useEffect(() => {
     dispatch(changeLanguageAction('vn'));
-    dispatch(todoRequestAction());
-    // getAnime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // dispatch(todoRequestAction());
   }, []);
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      locale: locale,
-    },
-    validate: values => {
-      const error: any = {};
-      if (values.username.length === 0) {
-        error.username = 'Please enter username';
-      }
 
-      if (values.password.length === 0) {
-        error.password = 'Please enter password';
-      }
 
-      return error;
-    },
-    onSubmit: _values => {
+
+  const handleSubmitForm = async () => {
+    try {
       globalLoading.show();
-      setTimeout(() => {
-        globalLoading.hide();
+      const res = await fetchLogin(inputValue);
+      dispatch(saveAccessToken(res.data.access_token));
+      await AsyncStorage.setItem('accessToken', res.data.access_token);
+      const crflToken = await getCsrfToken()
+      dispatch(saveCsrfToken(crflToken.data.result));
+      if(crsftoken) {
         navigate('Main');
-      }, 1000);
-    },
-  });
+      }
+      globalLoading.hide();
+    } catch (error) {
+      globalLoading.hide();
+      console.log(error);
+    }
+  };
+
+
+
 
   return (
     <ImageBackground
@@ -78,12 +80,14 @@ const RegisterScrenn: React.FC<Props> = () => {
           labelStyle={styles.labelStyle}
           placeholderStyle={styles.placeholderStyle}
           textErrorStyle={styles.textErrorStyle}
-          value={formik.values.username}
-          onChangeText={formik.handleChange('username')}
+          value={inputValue.username}
+          onChangeText={text => {
+            setInputValue({ ...inputValue, username: text });
+          }}
           label="Username"
           placeholder="Placeholder"
           placeholderTextColor="gray"
-          textError={formik.errors.username}
+          // textError={'Please enter username'}
         />
 
         <TextInput
@@ -92,31 +96,35 @@ const RegisterScrenn: React.FC<Props> = () => {
           labelStyle={styles.labelStyle}
           placeholderStyle={styles.placeholderStyle}
           textErrorStyle={styles.textErrorStyle}
-          value={formik.values.password}
+          value={inputValue.password}
           textContentType="oneTimeCode"
-          onChangeText={formik.handleChange('password')}
+          onChangeText={e => {
+            setInputValue({
+              ...inputValue,
+              password: e,
+            });
+          }}
           label="Password"
           placeholder="Enter password"
           placeholderTextColor="gray"
           secureTextEntry
-          textError={formik.errors.password}
+          // textError={'Please enter password'}
         />
 
         <Button
           style={styles.button}
           title="Login"
           fontSize={20}
-          onPress={formik.handleSubmit}
+          onPress={handleSubmitForm}
         />
         <Text style={styles.textOr} fontSize={16}>
-          Or
+         Or
         </Text>
-        <Text
-          style={styles.textOr}
-          fontSize={18}
+        <Body16SB
+          clsx={'text-center text-gray2'}
           onPress={() => navigate('Register')}>
           Create new account?
-        </Text>
+        </Body16SB>
       </View>
     </ImageBackground>
   );
