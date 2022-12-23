@@ -21,7 +21,7 @@ const FlashListWrapper: PropsFlashList = props => {
         renderItem={renderItem}
         onEndReachedThreshold={0.5}
         onEndReached={() => onLoadMore && onLoadMore()}
-        estimatedItemSize={200}
+        estimatedItemSize={300}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         refreshing={

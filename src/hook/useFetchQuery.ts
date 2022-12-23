@@ -8,10 +8,6 @@ interface IProps {
 }
 
 const useFetchQuery = ({ queryKey, queryFn, config, mutationFn }: IProps) => {
-  console.log('queryKey', queryKey);
-  console.log('queryFn', queryFn);
-  console.log('config', config);
-
   const { data, isLoading, error, refetch, isError } = useQuery(
     queryKey,
     queryFn,
