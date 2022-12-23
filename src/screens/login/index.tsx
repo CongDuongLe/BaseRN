@@ -6,8 +6,12 @@ import React, { useEffect, useState } from 'react';
 import { ImageBackground, View } from 'react-native';
 import { TextInput } from 'react-native-element-textinput';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogin, getCsrfToken } from "@services/API/LoginAPI";
-import { saveAccessToken, saveCsrfToken } from "@reduxCore/auth/AuthSlice";
+import { fetchLogin, getCsrfToken } from '@services/API/LoginAPI';
+import {
+  saveAccessToken,
+  saveCsrfToken,
+  changeIsAuthenticated,
+} from '@reduxCore/auth/AuthSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
@@ -24,11 +28,12 @@ interface Props {}
 
 const RegisterScrenn: React.FC<Props> = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
-  const { locale } = useSelector(selectMain);
 
   const dispatch = useDispatch();
-  const accessToken = useSelector((state: any) => state.auth.accessToken);
-  const crsftoken = useSelector((state: any) => state.auth.csrfToken);
+  const isAuthenticated = useSelector(
+    (state: any) => state.auth.isAuthenticated,
+  );
+
   const [inputValue, setInputValue] = useState({
     username: '',
     password: '',
@@ -41,18 +46,17 @@ const RegisterScrenn: React.FC<Props> = () => {
     // dispatch(todoRequestAction());
   }, []);
 
-
-
-
   const handleSubmitForm = async () => {
     try {
       globalLoading.show();
       const res = await fetchLogin(inputValue);
-      dispatch(saveAccessToken(res.data.access_token));
       await AsyncStorage.setItem('accessToken', res.data.access_token);
-      const crflToken = await getCsrfToken()
+      const crflToken = await getCsrfToken();
+      await AsyncStorage.setItem('csrfToken', crflToken.data.result);
+      dispatch(saveAccessToken(res.data?.access_token));
       dispatch(saveCsrfToken(crflToken.data.result));
-      if(crsftoken) {
+      dispatch(changeIsAuthenticated(true));
+      if (isAuthenticated) {
         navigate('Main');
       }
       globalLoading.hide();
@@ -61,9 +65,6 @@ const RegisterScrenn: React.FC<Props> = () => {
       console.log(error);
     }
   };
-
-
-
 
   return (
     <ImageBackground
@@ -118,7 +119,7 @@ const RegisterScrenn: React.FC<Props> = () => {
           onPress={handleSubmitForm}
         />
         <Text style={styles.textOr} fontSize={16}>
-         Or
+          Or
         </Text>
         <Body16SB
           clsx={'text-center text-gray2'}

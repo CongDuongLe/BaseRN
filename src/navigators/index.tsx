@@ -30,7 +30,7 @@ const Stack = createNativeStackNavigator();
 
 
 function AppNavigator() {
-  const crsftoken = useSelector((state: any) => state.auth.csrfToken);
+  const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
 
 
 
@@ -38,7 +38,7 @@ function AppNavigator() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName={
-        crsftoken ? 'Main' : 'Login'
+        isAuthenticated ? 'Main' : 'Login'
       }>
         <Stack.Screen
           name="Main"

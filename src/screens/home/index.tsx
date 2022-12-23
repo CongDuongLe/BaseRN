@@ -22,6 +22,9 @@ import FilterIconSVG from '@assets/svg/FilterIconSVG';
 import { COLORS } from '@constants/Constants';
 import ChrismastIsComing from '@screens/lotties/ChrismastIsComing';
 import Button from '@core/Button';
+import { useDispatch } from 'react-redux';
+import { changeIsAuthenticated } from '@reduxCore/auth/AuthSlice';
+import { navigationRef } from '@navigators';
 import ImageComponent from '@core/Image/ImageComponent';
 
 const { width } = Dimensions.get('window');
@@ -29,6 +32,8 @@ const { width } = Dimensions.get('window');
 interface Props {}
 
 const HomeScreen: React.FC<Props> = () => {
+  const dispatch = useDispatch();
+
   return (
     <SafeAreaView style={styles.container}>
       <Header onPressUser={() => {}} onChangeText={_e => {}} />
@@ -52,9 +57,10 @@ const HomeScreen: React.FC<Props> = () => {
 
           <ApplyButton
             onPress={() => {
-              console.log('click');
+              dispatch(changeIsAuthenticated(false));
+              navigationRef.current?.navigate('Login');
             }}>
-            <Body16BUp clsx={'text-white'}>Áp dụng</Body16BUp>
+            <Body16BUp clsx={'text-white'}>Logout</Body16BUp>
           </ApplyButton>
         </Row>
 
@@ -84,14 +90,10 @@ const HomeScreen: React.FC<Props> = () => {
           <ChrismastIsComing />
         </Card>
         <Row>
-          <Button
-            type = "dashed"
-            size = "middle"
-          >
-            <Text >Áp dụng</Text>
+          <Button type="dashed" size="middle">
+            <Text>Áp dụng</Text>
           </Button>
         </Row>
-        
       </ViewContainer>
     </SafeAreaView>
   );
