@@ -17,6 +17,15 @@ export const ViewContainer = ({ children, clsx }: ViewCoreProps) => {
   );
 };
 
+export const ViewComponent = ({ children, clsx }: ViewCoreProps) => {
+  return (
+    <StyledComponent
+      component={View}
+      className={clsx}>
+      {children}
+    </StyledComponent>
+  );
+};
 export const Row = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent

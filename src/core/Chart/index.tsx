@@ -1,14 +1,21 @@
 import React from "react";
-import { ViewContainer } from '@core/View';
-import { Body16SB } from '@core/Typo';
+import RNEChartsPro from "react-native-echarts-pro";
 
-const Chart = () => {
+interface Props{
+  option : object,
+  height? : number,
+  width? : number,
+  backgroundColor? : string,
+
+}
+const Chart: React.FC<Props> = ({option = {}, height, width, backgroundColor}) => {
   return (
-    <ViewContainer clsx="bg-white p-12 my-16">
-      <Body16SB>
-        Xu hướng doanh thu theo dịch vụ
-      </Body16SB>
-    </ViewContainer>
+    <RNEChartsPro
+      option = {option}
+      height = {height}
+      width = {width}
+      backgroundColor = {backgroundColor}
+    />
   )
 }
 export default Chart
