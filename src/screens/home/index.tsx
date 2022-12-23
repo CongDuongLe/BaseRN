@@ -1,5 +1,5 @@
 import { Header, Text } from '@components';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, View, Dimensions } from 'react-native';
 import { scale } from 'react-native-size-scaling';
 import { styles } from './styles';
@@ -23,7 +23,11 @@ import { COLORS } from '@constants/Constants';
 import ChrismastIsComing from '@screens/lotties/ChrismastIsComing';
 import Button from '@core/Button';
 import { useDispatch } from 'react-redux';
-import { changeIsAuthenticated } from '@reduxCore/auth/AuthSlice';
+import {
+  changeIsAuthenticated,
+  saveAccessToken,
+  saveCsrfToken,
+} from '@reduxCore/auth/AuthSlice';
 import { navigationRef } from '@navigators';
 import ImageComponent from '@core/Image/ImageComponent';
 
@@ -59,6 +63,8 @@ const HomeScreen: React.FC<Props> = () => {
             onPress={() => {
               dispatch(changeIsAuthenticated(false));
               navigationRef.current?.navigate('Login');
+              dispatch(saveCsrfToken(''));
+              dispatch(saveAccessToken(''));
             }}>
             <Body16BUp clsx={'text-white'}>Logout</Body16BUp>
           </ApplyButton>

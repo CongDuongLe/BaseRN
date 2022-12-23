@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native-size-scaling';
+import { COLORS, SPACING } from '@constants/Constants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
     padding: 16,
   },
   wrapBox: {
-    backgroundColor: '#F8F8FF',
+    backgroundColor: COLORS.white,
     margin: 16,
     paddingHorizontal: 16,
     paddingBottom: 32,
@@ -23,16 +24,17 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   title: {
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     marginVertical: 12,
-    color: 'gray',
+    color: COLORS.logo,
   },
   textinput: {
-    backgroundColor: 'white',
-    marginTop: 20,
-    height: 60,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.bg_input,
+    // marginTop: 16,
+    height: 56,
     paddingHorizontal: 16,
-    borderRadius: 8,
+    borderRadius: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -43,9 +45,9 @@ export const styles = StyleSheet.create({
 
     elevation: 2,
   },
-  inputStyle: { fontSize: 16 },
+  inputStyle: { fontSize: 14 },
   labelStyle: { fontSize: 14 },
-  placeholderStyle: { fontSize: 16 },
+  placeholderStyle: { fontSize: 14 },
   textErrorStyle: { fontSize: 14 },
   button: {
     backgroundColor: 'white',
