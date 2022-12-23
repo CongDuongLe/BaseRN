@@ -18,6 +18,7 @@ module.exports = {
           '@constants': './src/constants',
           '@core': './src/core',
           '@services': './src/services',
+          '@hooks': './src/hooks',
         },
       },
     ],

@@ -4,7 +4,6 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createSagaMiddleware from 'redux-saga';
 
-import logger from 'redux-logger';
 import { RootReducer, rootReducer } from '@reduxCore/store/rootReducers';
 import rootSaga from './rootSagas';
 
@@ -23,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: finalReducer,
-  middleware: [sagaMiddleware, logger],
+  middleware: [sagaMiddleware],
 });
 
 sagaMiddleware.run(rootSaga);
