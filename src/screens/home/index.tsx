@@ -37,6 +37,7 @@ interface Props {}
 
 const HomeScreen: React.FC<Props> = () => {
   const dispatch = useDispatch();
+  console.log(navigationRef, 'ref');
 
   return (
     <SafeAreaView style={styles.container}>

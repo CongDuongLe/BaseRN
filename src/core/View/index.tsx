@@ -18,24 +18,19 @@ export const ViewContainer = ({ children, clsx, ...props }: ViewCoreProps) => {
   );
 };
 
-
- 
-export const ViewComponent = ({ children, clsx }: ViewCoreProps) => {
+export const ViewComponent = ({ children, clsx, ...props }: ViewCoreProps) => {
   return (
-    <StyledComponent
-      component={View}
-      className={clsx}>
+    <StyledComponent component={View} className={clsx} {...props}>
       {children}
     </StyledComponent>
   );
 };
-export const Row = ({ children, clsx }: ViewCoreProps) => {
+export const Row = ({ children, clsx, ...props }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
       className={`flex flex-row gap-x-4 px-2 w-screen ${clsx ? clsx : ''}`}
-      {...props}
-    >
+      {...props}>
       {children}
     </StyledComponent>
   );
@@ -47,7 +42,6 @@ export const Col = ({ children, clsx, ...props }: ViewCoreProps) => {
       component={View}
       className={`flex flex-col gap-y-4 py-2 w-screen ${clsx ? clsx : ''}`}
       {...props}>
-
       {children}
     </StyledComponent>
   );
@@ -68,10 +62,10 @@ export const CardHeader = ({ children, clsx, ...props }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
-      className={`flex flex-row justify-between items-center ${clsx ? clsx : ''
-        }`}
-      {...props}
-    >
+      className={`flex flex-row justify-between items-center ${
+        clsx ? clsx : ''
+      }`}
+      {...props}>
       {children}
     </StyledComponent>
   );
@@ -92,10 +86,10 @@ export const CardFooter = ({ children, clsx, ...props }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
-      className={`flex flex-row justify-between items-center ${clsx ? clsx : ''
-        }`}
-      {...props}
-    >
+      className={`flex flex-row justify-between items-center ${
+        clsx ? clsx : ''
+      }`}
+      {...props}>
       {children}
     </StyledComponent>
   );
