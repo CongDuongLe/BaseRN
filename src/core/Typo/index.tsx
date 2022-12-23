@@ -7,6 +7,7 @@ interface TextCoreProps {
   children?: React.ReactNode;
   props?: any;
 }
+
 export const PageTitle = ({ children, clsx, ...props }: TextCoreProps) => {
   return (
     <StyledComponent
@@ -92,6 +93,18 @@ export const Body16BUp = ({ children, clsx, ...props }: TextCoreProps) => {
       component={Text}
       className={`font-i-bold text-16 text-main-blue ${clsx ? clsx : ''}
       } leading-24 uppercase`}>
+      {children}
+    </StyledComponent>
+  );
+};
+
+export const Body16B = ({ children, clsx, ...props }: TextCoreProps) => {
+  return (
+    <StyledComponent
+      {...props}
+      component={Text}
+      className={`font-i-bold text-16 text-black ${clsx ? clsx : ''}
+      } leading-24`}>
       {children}
     </StyledComponent>
   );

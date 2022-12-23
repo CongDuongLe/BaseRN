@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -33,6 +33,8 @@ module.exports = {
       black: '#000000',
       gray1: '#222222',
       gray2: '#4f4f4f',
+      gray4 : '#bdbdbd',
+      gray7 : '#f8f8f8',
       'chart-blue': '#007BFF',
       'chart-orange': '#FF7a45',
       'chart-green': '#1bac46',
@@ -41,6 +43,9 @@ module.exports = {
       'chart-pink': '#F26a7b',
       'chart-yellow': '#fada37',
       'chart-purple': '#6a58e5',
+      logo: '#00579C',
+      'bg-login': '#E5E5E5',
+      disabled: '#7facd1',
     },
     borderRadius: {
       2: '2px',
@@ -85,6 +90,11 @@ module.exports = {
         26: '26px',
         28: '28px',
         30: '30px',
+        32: '32px',
+        34: '34px',
+        36: '36px',
+        38: '38px',
+        40: '40px',
       },
       padding: {
         2: '2px',
@@ -124,14 +134,15 @@ module.exports = {
         26: '26px',
         28: '28px',
         30: '30px',
+        40: '40px',
       },
     },
     borderRadius: {
-      2 : '2px',
-      4 : '4px',
-      6 : '6px',
-      8 : '8px',
-      10 : '10px',
+      2: '2px',
+      4: '4px',
+      6: '6px',
+      8: '8px',
+      10: '10px',
     },
     plugins: [],
   },

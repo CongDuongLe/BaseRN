@@ -26,20 +26,19 @@ export const SPACING = {
 };
 
 export const SIZES = {
-  SIZES8 : 8,
-  SIZES10 : 10,
-  SIZES12 : 12,
-  SIZES14 : 14,
-  SIZES16 : 16,
-  SIZES18 : 18,
-  SIZES20 : 20,
-  SIZES22 : 22,
-  SIZES24 : 24,
-  SIZES26 : 26,
-  SIZES28 : 28,
-  SIZES30 : 30,
-}
-
+  SIZES8: 8,
+  SIZES10: 10,
+  SIZES12: 12,
+  SIZES14: 14,
+  SIZES16: 16,
+  SIZES18: 18,
+  SIZES20: 20,
+  SIZES22: 22,
+  SIZES24: 24,
+  SIZES26: 26,
+  SIZES28: 28,
+  SIZES30: 30,
+};
 
 export const COLORS = {
   main_blue: '#007BFF',
@@ -49,6 +48,8 @@ export const COLORS = {
   black: '#000000',
   gray1: '#222222',
   gray2: '#4f4f4f',
-  white : "#fff",
+  white: '#fff',
+  logo: '#00579C',
+  bg_input: '#BDBDBD',
+  disabled: '#7facd1',
 };
-

@@ -19,6 +19,7 @@ module.exports = {
           '@core': './src/core',
           '@services': './src/services',
           '@hooks': './src/hooks',
+          '@helpers': './src/helpers',
         },
       },
     ],
