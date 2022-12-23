@@ -11,12 +11,21 @@ export const ViewContainer = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent
       component={View}
-      className={`flex flex-col w-full h-full px-24 ${clsx} `}>
+      className={`flex flex-col  h-full mx-16 ${clsx} `}>
       {children}
     </StyledComponent>
   );
 };
 
+export const ViewComponent = ({ children, clsx }: ViewCoreProps) => {
+  return (
+    <StyledComponent
+      component={View}
+      className={clsx}>
+      {children}
+    </StyledComponent>
+  );
+};
 export const Row = ({ children, clsx }: ViewCoreProps) => {
   return (
     <StyledComponent

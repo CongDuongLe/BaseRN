@@ -11,6 +11,7 @@ import Lotties from '@screens/lotties/Lotties';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import ChartTestScreen from '@screens/chartTest/ChartTestScreen';
+import FinancialScreen from '@screens/report/FinancialScreen';
 
 export const tabBar = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -109,7 +110,8 @@ export const tabBar = () => {
           // options={{ headerShown: false }}
           name="Lotties"
           position="RIGHT"
-          component={() => <Lotties />}
+          // component={() => <Lotties />}
+          component={() => <FinancialScreen />}
         />
         <CurvedBottomBar.Screen
           // options={{ headerShown: false }}
