@@ -63,7 +63,7 @@ const HomeScreen: React.FC<Props> = () => {
           <ApplyButton
             onPress={() => {
               dispatch(changeIsAuthenticated(false));
-              navigationRef.current?.navigate('Login');
+              // navigationRef.current?.navigate('Login');
               dispatch(saveCsrfToken(''));
               dispatch(saveAccessToken(''));
             }}>

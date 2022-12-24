@@ -67,9 +67,9 @@ const RegisterScrenn: React.FC<Props> = () => {
     try {
       globalLoading.show();
       const res = await fetchLogin(inputValue);
-      if (res.data.access_token) {
-        navigate('Main');
-      }
+      // if (res.data.access_token) {
+      //   navigate('Main');
+      // }
       await AsyncStorage.setItem('accessToken', res.data.access_token);
       dispatch(saveAccessToken(res.data?.access_token));
       dispatch(saveCsrfToken(true));

@@ -33,7 +33,7 @@ function AppNavigator() {
   const isAuthenticated = useSelector(
     (state: any) => state.auth.isAuthenticated,
   );
-  const NotAuthorizeScreenStack = ({ navigation }) => {
+  const NotAuthorizeScreenStack = () => {
     return (
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
@@ -50,9 +50,9 @@ function AppNavigator() {
     );
   };
 
-  const MainStackNavigator = ({ navigation }) => {
+  const MainStackNavigator = () => {
     return (
-      <Stack.Navigator initialRouteName={'Main'}>
+      <Stack.Navigator>
         <Stack.Screen
           name="Main"
           component={tabBar}
@@ -72,7 +72,7 @@ function AppNavigator() {
     );
   };
 
-  const DrawerNavigator = ({ navigation }) => {
+  const DrawerNavigator = () => {
     return (
       <Drawer.Navigator
         screenOptions={{
@@ -91,13 +91,17 @@ function AppNavigator() {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {isAuthenticated ? 
-        <DrawerNavigator navigation={
-          navigationRef.current?.getRootState().routes[0].state?.index === 0
-            ? navigationRef
-            : null
-        } /> :
-        <NotAuthorizeScreenStack />}
+      {isAuthenticated ? (
+        <DrawerNavigator
+          navigation={
+            navigationRef.current?.getRootState().routes[0].state?.index === 0
+              ? navigationRef
+              : null
+          }
+        />
+      ) : (
+        <NotAuthorizeScreenStack />
+      )}
     </NavigationContainer>
   );
 }
