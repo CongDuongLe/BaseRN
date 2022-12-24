@@ -89,7 +89,7 @@ const RegisterScrenn: React.FC<Props> = () => {
           style={[
             styles.textinput,
             {
-              marginBottom: inputValue.username !== '' ? 16 : 8
+              marginBottom: inputValue.username !== '' ? 16 : 8,
             },
           ]}
           inputStyle={styles.inputStyle}

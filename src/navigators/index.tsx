@@ -3,7 +3,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import LoginScreen from '@screens/login';
 import RegisterScreen from '@screens/register';
 
@@ -18,33 +18,24 @@ import AvatarScreen from '@screens/theme/avatar';
 import CheckboxScreen from '@screens/theme/checkbox';
 import { tabBar } from './bottombar';
 import ReactQuery from '@screens/learn-react-query/ReactQuery';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { COLORS } from '@constants/Constants';
+import { Dimensions } from 'react-native';
 
+const { width } = Dimensions.get('window');
 export const navigationRef: React.RefObject<NavigationContainerRef<any>> =
   React.createRef();
 const Stack = createNativeStackNavigator();
-
-
-
-
-
+const Drawer = createDrawerNavigator();
 
 function AppNavigator() {
-  const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-
-
-
-
-  return (
-    <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName={
-        isAuthenticated ? 'Main' : 'Login'
-      }>
-        <Stack.Screen
-          name="Main"
-          component={tabBar}
-          options={{ headerShown: false }}
-        />
+  const isAuthenticated = useSelector(
+    (state: any) => state.auth.isAuthenticated,
+  );
+  const NotAuthorizeScreenStack = ({ navigation }) => {
+    return (
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -53,6 +44,18 @@ function AppNavigator() {
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    );
+  };
+
+  const MainStackNavigator = ({ navigation }) => {
+    return (
+      <Stack.Navigator initialRouteName={'Main'}>
+        <Stack.Screen
+          name="Main"
+          component={tabBar}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Dropdown" component={DropdownScreen} />
@@ -66,6 +69,35 @@ function AppNavigator() {
         <Stack.Screen name="Checkbox" component={CheckboxScreen} />
         <Stack.Screen name="QueryScreen" component={ReactQuery} />
       </Stack.Navigator>
+    );
+  };
+
+  const DrawerNavigator = ({ navigation }) => {
+    return (
+      <Drawer.Navigator
+        screenOptions={{
+          headerShown: false,
+          drawerStyle: {
+            backgroundColor: COLORS.white,
+            width: width * 0.7,
+          },
+          drawerPosition: 'left',
+        }}>
+        <Drawer.Screen name="Main" component={MainStackNavigator} />
+        {/* <Stack.Screen name="No_Auth" component={NotAuthorizeScreenStack} /> */}
+      </Drawer.Navigator>
+    );
+  };
+
+  return (
+    <NavigationContainer ref={navigationRef}>
+      {isAuthenticated ? 
+        <DrawerNavigator navigation={
+          navigationRef.current?.getRootState().routes[0].state?.index === 0
+            ? navigationRef
+            : null
+        } /> :
+        <NotAuthorizeScreenStack />}
     </NavigationContainer>
   );
 }

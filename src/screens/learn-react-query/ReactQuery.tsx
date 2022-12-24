@@ -32,7 +32,7 @@ const ReactQuery = () => {
     error,
     refetch,
   } = useFetchQuery({
-    queryKey: ['getListMenuItems'],
+    queryKey: ['getListMenuItems', ],
     queryFn: getListMenuItems,
     config: {
       cacheTime: 1000 * 60 * 60 * 24,
